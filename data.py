@@ -38,6 +38,9 @@ list_ships = []
 
 enemy_list_ships = []
 
+
+
+
 attack1 = []
 
 UP = True
@@ -800,7 +803,7 @@ def up_pos(coor, button = False):
                                         check1 += 1
                     if ship1 == check1:
                         
-                                print(list_cell1)
+                                #print(list_cell1)
                                 if ship1 == 1 and ships[0] < 4:
                                     
                                     ship = m_ship.Ship(name_file1="img/1.png", x1=x1, y1=y1, rotate1=rotate)
@@ -825,13 +828,7 @@ def up_pos(coor, button = False):
                                     list_ships.append(ship)
                                 check = 0
                                 break
-                            #ludi i gitler i vernulsa vam vsem tututututututututu
-                            # pri stalene takogo NE BULO!!
-                            # pomni angely ne spat oni smotrat na teba
-                            # gde proshla tu tam upala zvezda tam svetila luna i igrala volna
-                            # lorax uxodit
-                            # skibidi toilet
-                            #                   
+         
                 x1+=40
             y1+=40
             x1=75
@@ -899,4 +896,53 @@ def win_lose():
         color = (25,255,25)
     if text != None:
         win = 1
-        m_screen.screen.blit(font_win.render(text,0,color), (300, 25))
+        m_screen.screen.blit(font_win.render(text,0,color), (390, 0))
+font1 = pygame.font.SysFont('comicsansms',36)
+def marker():
+    global font1
+    color = (0, 0, 0)
+    m_screen.screen.blit(font1.render("A",0,color), (83, 57))
+    m_screen.screen.blit(font1.render("B",0,color), (124, 57))
+    m_screen.screen.blit(font1.render("C",0,color), (165, 57))
+    m_screen.screen.blit(font1.render("D",0,color), (201, 57))
+    m_screen.screen.blit(font1.render("E",0,color), (244, 57))
+    m_screen.screen.blit(font1.render("F",0,color), (284, 57))
+    m_screen.screen.blit(font1.render("G",0,color), (323, 57))
+    m_screen.screen.blit(font1.render("H",0,color), (361, 57))
+    m_screen.screen.blit(font1.render("I",0,color), (405, 57))
+    m_screen.screen.blit(font1.render("J",0,color), (443, 57))
+
+    m_screen.screen.blit(font1.render("1",0,color), (45, 94))
+    m_screen.screen.blit(font1.render("2",0,color), (45, 132))
+    m_screen.screen.blit(font1.render("3",0,color), (45, 174)) 
+    m_screen.screen.blit(font1.render("4",0,color), (45, 213))
+    m_screen.screen.blit(font1.render("5",0,color), (45, 252))
+    m_screen.screen.blit(font1.render("6",0,color), (45, 292))
+    m_screen.screen.blit(font1.render("7",0,color), (42, 333))
+    m_screen.screen.blit(font1.render("8",0,color), (40, 373))
+    m_screen.screen.blit(font1.render("9",0,color), (45, 414))
+    m_screen.screen.blit(font1.render("10",0,color), (35, 452))
+#
+    m_screen.screen.blit(font1.render("A",0,color), (533, 57))
+    m_screen.screen.blit(font1.render("B",0,color), (574, 57))
+    m_screen.screen.blit(font1.render("C",0,color), (612, 57))
+    m_screen.screen.blit(font1.render("D",0,color), (651, 57))
+    m_screen.screen.blit(font1.render("E",0,color), (693, 57))
+    m_screen.screen.blit(font1.render("F",0,color), (735, 57))
+    m_screen.screen.blit(font1.render("G",0,color), (774, 57))
+    m_screen.screen.blit(font1.render("H",0,color), (811, 57))
+    m_screen.screen.blit(font1.render("I",0,color), (854, 57))
+    m_screen.screen.blit(font1.render("J",0,color),(894, 56))
+
+    m_screen.screen.blit(font1.render("1",0,color), (935, 94))
+    m_screen.screen.blit(font1.render("2",0,color), (935, 132))
+    m_screen.screen.blit(font1.render("3",0,color), (935, 174)) 
+    m_screen.screen.blit(font1.render("4",0,color), (935, 213))
+    m_screen.screen.blit(font1.render("5",0,color), (935, 252))
+    m_screen.screen.blit(font1.render("6",0,color), (935, 292))
+    m_screen.screen.blit(font1.render("7",0,color), (935, 333))
+    m_screen.screen.blit(font1.render("8",0,color), (935, 373))
+    m_screen.screen.blit(font1.render("9",0,color), (935, 414))
+    m_screen.screen.blit(font1.render("10",0,color), (935, 452))
+#   
+

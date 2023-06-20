@@ -108,6 +108,7 @@ def check(row, cell):
         return 0
     else:
         return 90
+
 # pygame.transform.rotate()
 class Bot(m_settings.Settings):
     def __init__(self,width1=40,height1=40, x1 = 0, y1=0, name_file1= None, rotate1=False, rotate2= False):
@@ -120,27 +121,45 @@ class Bot(m_settings.Settings):
         self.ROTATE1 =list_1
     def place(self):
         # count3 = [0,0,0,0]
+        #3 0 3
+        #n 0 n
+        #3 0 n
         for count in range(10):
             for count1 in range(10):
                 if m_data.list_cell2[count][count1] == 1:
                     ship = m_ship.Ship(x1=self.X2, y1=self.Y2, name_file1="img/1.png", rotate1=self.ROTATE1[0][0])
                     del self.ROTATE1[0][0]
                     ship.load_image()
+                    ship.CELLS=[[count, count1]]#
                     m_data.enemy_list_ships.append(ship)
                 if m_data.list_cell2[count][count1] == 22:
                     ship = m_ship.Ship(width1=80, x1=self.X2, y1=self.Y2, name_file1="img/2.png", rotate1=check(count, count1))
                     del self.ROTATE1[1][0]
                     ship.load_image()
+                    if check(count, count1):
+                        ship.CELLS=[[count, count1],[count+1, count1]]#
+                    else:
+                        ship.CELLS=[[count, count1],[count, 1+count1]]#
                     m_data.enemy_list_ships.append(ship)
                 if m_data.list_cell2[count][count1] == 33:
                     ship = m_ship.Ship(width1=120,x1=self.X2, y1=self.Y2, name_file1="img/3.png", rotate1=check(count, count1))
                     del self.ROTATE1[2][0]
                     ship.load_image()
+                    if check(count, count1):
+                        ship.CELLS=[[count, count1],[count+1, count1],[count+2, count1]]#
+                    else:
+                        ship.CELLS=[[count, count1],[count, count1+1],[count, count1+2]]#
+                    # ship.CELLS.append([count, count1])#
                     m_data.enemy_list_ships.append(ship)
                 if m_data.list_cell2[count][count1] == 44:
                     ship = m_ship.Ship(width1=160, x1=self.X2, y1=self.Y2, name_file1="img/4.png", rotate1=check(count, count1))
                     del self.ROTATE1[3][0]
                     ship.load_image()
+                    if check(count, count1):
+                        ship.CELLS=[[count, count1],[count+1, count1],[count+2, count1],[count+3, count1]]#
+                    else:
+                        ship.CELLS=[[count, count1],[count, count1+1],[count, count1+2],[count, count1+3]]#
+                    # ship.CELLS.append([count, count1])#
                     m_data.enemy_list_ships.append(ship)
                 self.X2 += 40
             self.Y2 += 40

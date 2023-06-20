@@ -8,9 +8,9 @@ class Ship(m_settings.Settings):
         self.SHIP = 1 
         self.ANGLE = "R"
         self.COUNT2 = 0
-
-            
-
+        self.DAMAGE = 0
+        self.CELLS = []
+    
 ship = Ship(name_file1="img/1.png")
 double_ship = Ship(width1=80, heigt1=40, name_file1="img/2.png", x1= 40, y1=0)
 triple_ship = Ship(width1=120, heigt1=40, name_file1="img/3.png", x1=120, y1=0)
