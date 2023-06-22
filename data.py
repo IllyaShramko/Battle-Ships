@@ -38,7 +38,7 @@ list_ships = []
 
 enemy_list_ships = []
 
-
+language = "EN"
 
 
 attack1 = []
@@ -627,8 +627,8 @@ shoot = 0
 reverse = 0
 turn1 = 0
 shoot1=0
-
-
+game1 = False
+game = True
 def attack_bot():
     global turn, last_attack, last_attack1,shoot, turn1,shoot1,reverse
     if turn:
@@ -756,14 +756,28 @@ def attack_bot():
                 attack_bot()   
 def click_pos(coordinate, button = False):
         
-    global start 
+    global start, game1, game, language
     # #
     x = coordinate[0]
     y = coordinate[1]
-
-
-    if 450 < x < 550 and 550 < y < 625 and ships == [4, 3, 2, 1]:
-        start = True
+    if not game1:
+        if 400 < x < 600 and 135 < y < 235:
+            game1 = not game1
+            pygame.mixer.music.stop()
+        if 400 < x < 600 and 410 < y < 545:
+            game = False
+        if 400 < x < 600 and 255 < y < 390:
+            if language == "EN":
+                language = "UA"
+                pygame.display.set_caption("Морській бій!")
+                # m_screen.title1 = "Морській бій!"
+            elif language == "UA":
+                language = "EN"
+                pygame.display.set_caption("Battle Ships!")
+                # m_screen.title1 = "Battle Ships!"
+    if game1:
+        if 450 < x < 550 and 550 < y < 625 and ships == [4, 3, 2, 1]:
+            start = True
 def up_pos(coor, button = False):
     global ship1, list_ships, select, UP, rotate
     x = coor[0]
@@ -886,17 +900,29 @@ def check_win(list_cell):
     return check
 font_win = pygame.font.SysFont('comicsansms',50)
 def win_lose():
-    global list_cell1, list_cell2, font_win, win
+    global list_cell1, list_cell2, font_win, win, language
     text= None
-    if check_win(list_cell1):
-        text = "Поразка!"
-        color = (255,25,25)
-    elif check_win(list_cell2):
-        text = "Перемога!"
-        color = (25,255,25)
+    if language == "UA":
+        if check_win(list_cell1):
+            text = "Поразка!"
+            color = (255,25,25)
+        elif check_win(list_cell2):
+            text = "Перемога!"
+            color = (25,255,25)
+        x1 = 390
+        y1 = 0
+    if language == "EN":
+        if check_win(list_cell1):
+            text = "Lose!"
+            color = (255,25,25)
+        elif check_win(list_cell2):
+            text = "Win!"
+            color = (25,255,25)
+        x1 = 450
+        y1 = 0
     if text != None:
         win = 1
-        m_screen.screen.blit(font_win.render(text,0,color), (390, 0))
+        m_screen.screen.blit(font_win.render(text,0,color), (x1, y1))
 font1 = pygame.font.SysFont('comicsansms',36)
 def marker():
     global font1
