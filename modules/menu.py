@@ -1,9 +1,13 @@
 import pygame
 import modules.screen as m_screen
 import modules.data as m_data
-
+import modules.path_to_file as m_path
 pygame.init()
+img = "img/Sound_on.png"
+image1 = pygame.image.load(m_path.find_path_to_file(img))
+image2 = pygame.transform.scale(image1, (100, 100))
 def draw_menu():
+    global image2
     color = (0, 0, 0)
     if m_data.language == "EN":
         font1 = pygame.font.SysFont('comicsansms',70)
@@ -49,3 +53,6 @@ def draw_menu():
         border_radius=5
     )
     
+    
+    
+    m_screen.screen.blit(image2, (5, 0))

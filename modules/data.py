@@ -1,8 +1,10 @@
 import pygame
-#import modules.path_to_file as m_path
+import modules.path_to_file as m_path
 import modules.screen as m_screen
 import modules.ship as m_ship
+import modules.menu as m_menu
 import random
+import modules.music as m_music
 turn=0
 pygame.init()
 win = 0
@@ -599,6 +601,7 @@ def draw_attack(x, y, hit=True):
         #     end_pos=(x,y+40),
         #     width=3
         # )
+
 def attack(coor):
     global list_cell2, attack1,turn
     if turn==0:
@@ -613,6 +616,8 @@ def attack(coor):
                         hit=1
                         turn=not turn
                         list_cell2[row][cell] = None
+                        pygame.mixer.music.load(m_path.find_path_to_file("music/shoot.mp3"))
+                        pygame.mixer.music.play()
                         # attack()
                     else:
                         list_cell2[row][cell] = None
@@ -775,6 +780,19 @@ def click_pos(coordinate, button = False):
                 language = "EN"
                 pygame.display.set_caption("Battle Ships!")
                 # m_screen.title1 = "Battle Ships!"
+        if 5 < x < 105 and 0 < y < 100:
+            
+            
+            if m_menu.img == "img/Sound_on.png":
+                m_menu.img = "img/Sound_off.png"
+                pygame.mixer.music.pause()
+            elif m_menu.img == "img/Sound_off.png":
+                m_menu.img = "img/Sound_on.png"
+                pygame.mixer.music.unpause()
+                
+            m_menu.image1 = pygame.image.load(m_menu.m_path.find_path_to_file(m_menu.img))
+            m_menu.image2 = pygame.transform.scale(m_menu.image1, (100, 100))
+            
     if game1:
         if 450 < x < 550 and 550 < y < 625 and ships == [4, 3, 2, 1]:
             start = True
